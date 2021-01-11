@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Universal Consulting Links Ghana 2019.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="15dp"
+    android:shape="rectangle">
+    <solid android:color="@color/md_white_1000" />
+
+    <corners android:radius="15dp" />
+</shape>

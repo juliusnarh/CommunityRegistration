@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CommunityRegistration</string>
+    <string name="sync">Sync Offline</string>
+    <string name="mapview">Map View</string>
+    <string name="map_view_description">View registered communities on map</string>
+    <string name="sync_description">Sync all offline data to server</string>
+    <string name="register_community">Register Community</string>
+    <string name="register_community_description">Add new community here</string>
+    <string name="label_community_name">Community Name</string>
+    <string name="label_geographical">Geographical District</string>
+    <string name="label_accessibility">Accessibility</string>
+    <string name="label_distance_ecom">Distance To ECOM</string>
+    <string name="label_connected_ecg">Connected To ECG</string>
+    <string name="label_latitude">Latitude</string>
+    <string name="label_license_date">License Date</string>
+    <string name="label_longitude">Longitude</string>
+    <string name="content_desc_community_photo">Image of community</string>
+    <string name="label_view_on_map">view on map</string>
+    <string name="complete_form">Complete Form</string>
+</resources>

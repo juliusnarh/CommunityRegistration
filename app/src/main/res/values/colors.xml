@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#37704c</color>
+    <color name="colorPrimaryDark">#37704c</color>
+    <color name="colorPrimaryLight">#C0D8B6</color>
+    <color name="colorAccent">#f8ba12</color>
+    <color name="primaryColor">#f8ba12</color>
+    <color name="scan_overlay">#4A37704c</color>
+    <color name="primaryLightColor">#ffec53</color>
+    <color name="primaryDarkColor">#c08a00</color>
+    <color name="secondaryLightColor">#659f78</color>
+    <color name="tertiary">#2E7D2C</color>
+    <color name="md_red_500">#F44336</color>
+    <color name="card_shadow">#FF424242</color>
+    <color name="colorRow">#E5E6EC</color>
+    <color name="tab_background">#E0EEF1</color>
+    <color name="success">#C3E678</color>
+    <color name="error">#E24C4B</color>
+
+    <!--grey-->
+    <color name="md_grey_50">#FAFAFA</color>
+    <color name="md_grey_100">#F5F5F5</color>
+    <color name="md_grey_200">#EEEEEE</color>
+    <color name="md_grey_300">#E0E0E0</color>
+    <color name="md_grey_700">#616161</color>
+    <color name="md_grey_800">#424242</color>
+    <color name="md_grey_900">#212121</color>
+
+</resources>

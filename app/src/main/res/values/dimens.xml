@@ -1,0 +1,41 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="activity_margin">10dp</dimen>
+    <dimen name="activity_margin_less">5dp</dimen>
+    <dimen name="row_padding">15dp</dimen>
+    <dimen name="thumbnail">40dp</dimen>
+    <dimen name="number_height">85dp</dimen>
+    <integer name="labels_animation_duration">350</integer>
+
+
+    <dimen name="ts_tiniest">7.0sp</dimen>
+    <dimen name="ts_tinier">8.0sp</dimen>
+    <dimen name="ts_very_tiny">9.0sp</dimen>
+    <dimen name="ts_tiny">10.0sp</dimen>
+    <dimen name="ts_extra_small">11.0sp</dimen>
+    <dimen name="ts_very_small">12.0sp</dimen>
+    <dimen name="ts_smaller">13.0sp</dimen>
+    <dimen name="ts_small">14.0sp</dimen>
+    <dimen name="ts">15.0sp</dimen>
+    <dimen name="ts_normal">16.0sp</dimen>
+    <dimen name="ts_medium">17.0sp</dimen>
+    <dimen name="ts_big">18.0sp</dimen>
+    <dimen name="ts_large">20.0sp</dimen>
+    <dimen name="ts_very_large">25.0sp</dimen>
+    <dimen name="ts_xlarge">27.0sp</dimen>
+    <dimen name="ts_extra_large">30.0sp</dimen>
+    <dimen name="ts_xx_large">35.0sp</dimen>
+
+
+    <dimen name="spacing_normal">11dp</dimen>
+    <dimen name="spacing_small">5dp</dimen>
+    <dimen name="spacing_medium">8dp</dimen>
+    <dimen name="recycler_spacing_large">21dp</dimen>
+
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="round_button_xsmall">28dp</dimen>
+    <dimen name="round_button_small">42dp</dimen>
+    <dimen name="round_button_medium">64dp</dimen>
+    <dimen name="round_button_large">80dp</dimen>
+    <dimen name="row_height">70dp</dimen>
+</resources>

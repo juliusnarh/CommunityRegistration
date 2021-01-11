@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.uclgh.cocobod.activities.DispatchActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_strip_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true">
+
+                <LinearLayout
+                    android:id="@+id/dispatch_details_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:stretchColumns="*"
+                        tools:context=".activities.DispatchActivity">
+
+                        <TableRow android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/varelaround"
+                                android:textColor="@color/md_grey_900"
+                                android:textSize="@dimen/ts_very_small"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/expected_arrival_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_form"
+                                android:clickable="true"
+                                android:drawablePadding="5dp"
+                                android:focusable="false"
+                                android:fontFamily="@font/ibmplexsans_regular"
+                                android:importantForAutofill="no"
+                                android:inputType="text"
+                                android:minHeight="40dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textSize="@dimen/ts"
+                                app:validateEmpty="@{true}"
+                                tools:ignore="KeyboardInaccessibleWidget" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="0"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/varelaround"
+                                android:labelFor="@+id/vehicle_registration"
+                                android:text="@string/label_vehicle_reg"
+                                android:textColor="@color/md_grey_900"
+                                android:textSize="@dimen/ts_very_small"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/varelaround"
+                                android:labelFor="@+id/driver_name"
+                                android:text="@string/label_driver"
+                                android:textColor="@color/md_grey_900"
+                                android:textSize="@dimen/ts_very_small"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/vehicle_registration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="0"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/background_form"
+                                android:clickable="true"
+                                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                                android:drawablePadding="5dp"
+                                android:focusable="false"
+                                android:fontFamily="@font/ibmplexsans_regular"
+                                android:importantForAutofill="no"
+                                android:inputType="text"
+                                android:minHeight="40dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@={waybill.vehicle_reg_number}"
+                                android:textSize="@dimen/ts"
+                                app:validateEmpty="@{true}"
+                                tools:ignore="KeyboardInaccessibleWidget" />
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/driver_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:background="@drawable/background_form"
+                                android:clickable="true"
+                                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                                android:drawablePadding="5dp"
+                                android:focusable="false"
+                                android:fontFamily="@font/ibmplexsans_regular"
+                                android:importantForAutofill="no"
+                                android:inputType="text"
+                                android:minHeight="40dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@={waybill.driver_name}"
+                                android:textSize="@dimen/ts"
+                                app:validateEmpty="@{true}"
+                                tools:ignore="KeyboardInaccessibleWidget" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/varelaround"
+                                android:labelFor="@+id/destination"
+                                android:text="@string/label_destination"
+                                android:textColor="@color/md_grey_900"
+                                android:textSize="@dimen/ts_very_small"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/destination"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_form"
+                                android:clickable="true"
+                                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                                android:drawablePadding="5dp"
+                                android:focusable="false"
+                                android:fontFamily="@font/ibmplexsans_regular"
+                                android:importantForAutofill="no"
+                                android:inputType="text"
+                                android:minHeight="40dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@={waybill.destination_name}"
+                                android:textSize="@dimen/ts"
+                                app:validateEmpty="@{true}"
+                                tools:ignore="KeyboardInaccessibleWidget" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/varelaround"
+                                android:labelFor="@+id/odometer"
+                                android:text="@string/label_odometer"
+                                android:textColor="@color/md_grey_900"
+                                android:textSize="@dimen/ts_very_small"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/odometer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_form"
+                                android:drawablePadding="5dp"
+                                android:fontFamily="@font/ibmplexsans_regular"
+                                android:importantForAutofill="no"
+                                android:inputType="number"
+                                android:minHeight="40dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:text="@={waybill.odometer}"
+                                android:textSize="@dimen/ts"
+                                app:validateEmpty="@{true}" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/varelaround"
+                                android:labelFor="@+id/items_description"
+                                android:text="@string/label_item_description"
+                                android:textColor="@color/md_grey_900"
+                                android:textSize="@dimen/ts_very_small"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow>
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/items_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/background_form"
+                                android:drawablePadding="5dp"
+                                android:fontFamily="@font/ibmplexsans_regular"
+                                android:gravity="top"
+                                android:importantForAutofill="no"
+                                android:inputType="text"
+                                android:minHeight="200dp"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingRight="10dp"
+                                android:text=""
+                                android:textSize="@dimen/ts"
+                                app:validateEmpty="@{true}" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <View
+            android:id="@+id/horizontal_strip_2"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/md_grey_300"
+            app:layout_constraintBottom_toTopOf="@id/complete_dispatch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/complete_dispatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:mrl_rippleAlpha="0.2"
+            app:mrl_rippleColor="#000000"
+            app:mrl_rippleDimension="10dp"
+            app:mrl_rippleDuration="300"
+            app:mrl_rippleHover="true"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleRoundedCorners="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:animateLayoutChanges="true"
+                android:background="@color/md_white_1000"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="15dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/proceed_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/ibmplexsans_regular"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:padding="5dp"
+                    android:text="@string/complete_form"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/ts_big"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:autoSizeMaxTextSize="@dimen/ts"
+                    app:autoSizeMinTextSize="@dimen/ts_very_small"
+                    app:autoSizeTextType="uniform"/>
+            </LinearLayout>
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
