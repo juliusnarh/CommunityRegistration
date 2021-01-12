@@ -17,4 +17,9 @@
     <string name="content_desc_community_photo">Image of community</string>
     <string name="label_view_on_map">view on map</string>
     <string name="complete_form">Complete Form</string>
+    <string name="button_submit_form">Submit Form</string>
+    <string name="take_photo">take photo</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="view_all">View all data</string>
 </resources>

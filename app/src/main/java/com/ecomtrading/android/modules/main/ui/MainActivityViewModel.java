@@ -1,4 +1,4 @@
-package com.ecomtrading.android.modules.main;
+package com.ecomtrading.android.modules.main.ui;
 
 import android.app.Application;
 
@@ -13,15 +13,21 @@ import com.ecomtrading.android.localstorage.DatabaseHelper;
 
 import java.util.List;
 
-public class MainActivityViewModel extends AndroidViewModel {
+public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<List<Community>> communityList;
-    DatabaseHelper db = new DatabaseHelper(getApplication());
+    DatabaseHelper db;
+    private final Application app;
 
     public MainActivityViewModel(@NonNull Application application) {
-        super(application);
+        app = application;
+        communityList = new MutableLiveData<>();
+        db = new DatabaseHelper(application);
+        loadCommunityList();
     }
 
     public LiveData<List<Community>> getCommunityList() {
+        db = new DatabaseHelper(app.getApplicationContext());
+        loadCommunityList();
         if (communityList == null) {
             communityList = new MutableLiveData<>();
             loadCommunityList();
@@ -29,7 +35,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         return communityList;
     }
 
-    private void loadCommunityList() {
+    public void loadCommunityList() {
         communityList.setValue(db.getCommunityList());
     }
 }

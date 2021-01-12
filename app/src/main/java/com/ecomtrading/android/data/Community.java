@@ -24,7 +24,6 @@ public class Community {
             "CREATE TABLE " + TABLE_NAME + "("
                     + COLUMN_COMMUNITY_NAME + " TEXT,"
                     + COLUMN_COMMUNITY_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + COLUMN_COMMUNITY_NAME + " TEXT,"
                     + COLUMN_GEOGRAPHICAL_DISTRICT + " INTEGER,"
                     + COLUMN_ACCESSIBILITY + " INTEGER,"
                     + COLUMN_CONNECTED_ECG + " TEXT(1),"
@@ -36,7 +35,7 @@ public class Community {
                     + ")";
 
     @SerializedName("communityName") String communityName;
-    @SerializedName("communityName") int localid;
+    @SerializedName("localid") int localid;
     @SerializedName("geographicalDistrict") int geoDistrict;
     @SerializedName("accessibility") int accessibility;
     @SerializedName("connectedToECG") String connectedecg;

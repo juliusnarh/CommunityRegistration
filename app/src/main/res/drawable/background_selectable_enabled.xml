@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Universal Consulting Links Ghana 2019.
+  -->
+
+<!--  res/drawable/rounded_edittext.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="15dp"
+    android:shape="rectangle">
+    <gradient android:type="linear"
+        android:angle="90"
+        android:startColor="@color/md_green_800"
+        android:centerX="2"
+        android:centerColor="@color/md_green_600"
+        android:endColor="@color/md_green_800"/>
+    <corners android:radius="10dp"/>
+</shape>

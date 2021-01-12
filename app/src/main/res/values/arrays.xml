@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="connected_ecg">
+        <item>Y - Yes</item>
+        <item>N - No</item>
+    </string-array>
+</resources>

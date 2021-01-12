@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/md_blue_grey_50"
-        tools:context=".modules.main.MainActivity">
+        tools:context=".modules.main.ui.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/swipe_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -44,15 +44,14 @@
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_communtiy"
                 android:visibility="visible" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.core.widget.NestedScrollView>
 
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_view"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
-            android:visibility="@{loading ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="geoDistrict"
             type="com.ecomtrading.android.data.GeoDistrict" />
@@ -19,56 +17,44 @@
             type="com.ecomtrading.android.data.MasterData" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.ecomtrading.android.modules.registration.RegisterActivity">
+        android:orientation="vertical"
+        tools:context="com.ecomtrading.android.modules.registration.EditCommunityFragment">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:title="Community Registration"
-            android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:padding="5dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/complete_form_ripple"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar">
+            app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animateLayoutChanges="true">
-
+                android:orientation="vertical">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/photo_header"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_height="wrap_content">
                     <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/community_photo"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/avatar_placeholder"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:riv_corner_radius="50dp" />
+                        android:src="@drawable/avatar_placeholder"
+                        app:riv_corner_radius="50dp"
+                        android:scaleType="centerCrop"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -76,9 +62,9 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="72dp"
                         android:background="@drawable/background_text"
-                        android:drawableStart="@drawable/ic_add_24px"
                         android:gravity="center"
                         android:text="@string/take_photo"
+                        android:drawableStart="@drawable/ic_add_24px"
                         android:textColor="@color/white"
                         android:textSize="@dimen/ts_tiny"
                         android:textStyle="bold"
@@ -89,15 +75,14 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TableLayout
-                    android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/photo_header"
                     android:layout_marginBottom="20dp"
-                    android:stretchColumns="*"
-                    app:layout_constraintTop_toBottomOf="@id/photo_header">
+                    android:stretchColumns="*">
 
                     <TableRow android:layout_marginTop="20dp">
 
@@ -106,9 +91,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:layout_weight="1"
-                            android:fontFamily="@font/varelaround"
-                            android:labelFor="@id/community_name"
                             android:text="@string/label_community_name"
+                            android:labelFor="@id/community_name"
+                            android:fontFamily="@font/varelaround"
                             android:textColor="@color/md_grey_900"
                             android:textSize="@dimen/ts_very_small"
                             android:textStyle="bold" />
@@ -122,14 +107,16 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/background_form"
+                            android:clickable="true"
                             android:drawablePadding="5dp"
+                            android:focusable="false"
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:importantForAutofill="no"
                             android:inputType="text"
                             android:minHeight="40dp"
+                            android:text="@={community.communityName}"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.communityName}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
@@ -178,11 +165,11 @@
                             android:focusable="false"
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:importantForAutofill="no"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:minHeight="40dp"
+                            android:text="@={community.geoDistrict}"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.geoDistrict}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
@@ -198,12 +185,12 @@
                             android:drawablePadding="5dp"
                             android:focusable="false"
                             android:fontFamily="@font/ibmplexsans_regular"
+                            android:text="@={community.accessibility}"
                             android:importantForAutofill="no"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:minHeight="40dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.accessibility}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
@@ -253,12 +240,12 @@
                             android:drawablePadding="5dp"
                             android:focusable="false"
                             android:fontFamily="@font/ibmplexsans_regular"
+                            android:text="@={community.distancecom}"
                             android:importantForAutofill="no"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:minHeight="40dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.distancecom}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
@@ -271,6 +258,7 @@
                             android:background="@drawable/background_form"
                             android:clickable="true"
                             android:drawableEnd="@drawable/ic_arrow_drop_down"
+                            android:text="@={community.dateoflicense}"
                             android:drawablePadding="5dp"
                             android:focusable="false"
                             android:fontFamily="@font/ibmplexsans_regular"
@@ -279,7 +267,6 @@
                             android:minHeight="40dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.dateoflicense}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
@@ -309,22 +296,20 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/background_form"
-                            android:clickable="true"
-                            android:drawableEnd="@drawable/ic_arrow_drop_down"
                             android:drawablePadding="5dp"
-                            android:focusable="false"
+                            android:clickable="true"
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:importantForAutofill="no"
+                            android:drawableEnd="@drawable/ic_arrow_drop_down"
                             android:inputType="text"
                             android:minHeight="40dp"
+                            android:text="@={community.connectedecg}"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.connectedecg}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
                     </TableRow>
-
                     <TableRow android:layout_marginTop="20dp">
 
                         <TextView
@@ -365,12 +350,12 @@
                             android:background="@drawable/background_form"
                             android:drawablePadding="5dp"
                             android:fontFamily="@font/ibmplexsans_regular"
+                            android:text="@={community.longitude}"
                             android:importantForAutofill="no"
                             android:inputType="text"
                             android:minHeight="40dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.longitude}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
@@ -381,6 +366,7 @@
                             android:layout_height="wrap_content"
                             android:layout_column="1"
                             android:background="@drawable/background_form"
+                            android:text="@={community.latitude}"
                             android:drawablePadding="5dp"
                             android:fontFamily="@font/ibmplexsans_regular"
                             android:importantForAutofill="no"
@@ -388,31 +374,13 @@
                             android:minHeight="40dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@={community.latitude}"
                             android:textSize="@dimen/ts"
                             app:validateEmpty="@{true}"
                             tools:ignore="KeyboardInaccessibleWidget" />
 
                     </TableRow>
-
-                    <TableRow>
-
-
-                    </TableRow>
                 </TableLayout>
-
-                <ProgressBar
-                    android:id="@+id/progress_bar"
-                    android:visibility="gone"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
 
@@ -424,7 +392,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:mrl_rippleAlpha="0.1"
             app:mrl_rippleColor="#000000"
             app:mrl_rippleDimension="10dp"
@@ -448,5 +415,5 @@
                 android:textStyle="bold" />
         </com.balysv.materialripple.MaterialRippleLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

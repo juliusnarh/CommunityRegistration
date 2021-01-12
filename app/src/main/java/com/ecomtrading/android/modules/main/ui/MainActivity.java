@@ -1,8 +1,4 @@
-package com.ecomtrading.android.modules.main;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.databinding.DataBindingUtil;
+package com.ecomtrading.android.modules.main.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,10 +7,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.ecomtrading.android.R;
-import com.ecomtrading.android.RegisterActivity;
+import com.ecomtrading.android.data.Community;
 import com.ecomtrading.android.databinding.ActivityMainBinding;
-import com.ecomtrading.android.localstorage.DatabaseHelper;
+import com.ecomtrading.android.modules.registration.RegisterActivity;
 import com.ecomtrading.android.util.AndroidUtils;
 import com.ecomtrading.android.util.Constants;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
@@ -34,30 +35,65 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding = null;
-    private static String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
     private AccountHeader headerResult = null;
+    private MainActivityViewModel viewModel;
     private Drawer result = null;
-    private DatabaseHelper db;
+    private CommunityAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setupToolbar();
-        initialiseDBHelper();
-        setupRecyclerView();
+        setupRecyclerViewAndAdapter();
+        setupViewModel();
+        setupClickListeners();
         setupNavigationDrawer(savedInstanceState);
     }
 
-    private void initialiseDBHelper() {
-        db = new DatabaseHelper(this);
+    private void setupClickListeners() {
+        binding.fab.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
     }
 
-    private void setupRecyclerView() {
+    private void setupViewModel() {
+        viewModel = new ViewModelProvider(this, new MainViewModelFactory(getApplication())).get(MainActivityViewModel.class);
+        viewModel.getCommunityList().observe(this, communities -> {
+            adapter.updateList((ArrayList<Community>) communities);
+            hideEmptyCommunityList();
+        });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.updateList((ArrayList<Community>) viewModel.getCommunityList().getValue());
+        hideEmptyCommunityList();
+    }
+
+    public void refreshList() {
+        adapter.updateList((ArrayList<Community>) viewModel.getCommunityList().getValue());
+        hideEmptyCommunityList();
+    }
+
+    public void hideEmptyCommunityList() {
+        if (adapter.getItemCount() == 0) {
+            binding.animationView.setVisibility(View.VISIBLE);
+            binding.swipeContainer.setVisibility(View.GONE);
+        } else {
+            binding.animationView.setVisibility(View.GONE);
+            binding.swipeContainer.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void setupRecyclerViewAndAdapter() {
+        adapter = new CommunityAdapter(getApplicationContext(), getSupportFragmentManager(), this);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(adapter);
     }
 
     private void setupToolbar() {
@@ -102,11 +138,9 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
                                 intent = new Intent(MainActivity.this, RegisterActivity.class);
-                            }
-                            else if (drawerItem.getIdentifier() == 2) {
+                            } else if (drawerItem.getIdentifier() == 2) {
 //                                intent = new Intent(MainActivity.this, MapViewActivitry.class);
-                            }
-                            else if (drawerItem.getIdentifier() == 20) {
+                            } else if (drawerItem.getIdentifier() == 20) {
                                 intent = new Intent(Intent.ACTION_SEND);
                                 intent.setType("text/email");
                                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"narhjuliuscarl@gmail.com"});

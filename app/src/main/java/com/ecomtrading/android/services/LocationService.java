@@ -15,7 +15,7 @@ public class LocationService extends Service {
     public static final String BROADCAST_ACTION = "com.ecomtrading.android";
     private static final String TAG = LocationService.class.getSimpleName();
     private static final int LOCATION_INTERVAL = 1000;
-    private static final float LOCATION_DISTANCE = 10f;
+    private static final float LOCATION_DISTANCE = 30f;
     Intent intent;
     LocationListener[] mLocationListeners = new LocationListener[]{
             new LocationListener(LocationManager.GPS_PROVIDER),

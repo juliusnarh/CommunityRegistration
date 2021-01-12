@@ -54,8 +54,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(Community.COLUMN_COMMUNITY_NAME, community.getCommunityName());
         values.put(Community.COLUMN_GEOGRAPHICAL_DISTRICT, community.getGeoDistrict());
         values.put(Community.COLUMN_ACCESSIBILITY, community.getAccessibility());
+        values.put(Community.COLUMN_CONNECTED_ECG, community.getConnectedecg());
         values.put(Community.COLUMN_DISTANCE_ECOM, community.getDistancecom());
-        values.put(Community.COLUMN_DATE_OF_LICENSE, community.getConnectedecg());
+        values.put(Community.COLUMN_DATE_OF_LICENSE, community.getDateoflicense());
         values.put(Community.COLUMN_LATITUDE, community.getLatitude());
         values.put(Community.COLUMN_LONGITUDE, community.getLongitude());
         values.put(Community.COLUMN_COMMUNITY_IMAGE, community.getImage());
@@ -65,13 +66,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public Community getCommunity(int localId) {
+    public Community getCommunity(String localId) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Community.TABLE_NAME,
-                new String[]{Community.COLUMN_COMMUNITY_NAME, Community.COLUMN_COMMUNITY_ID, Community.COLUMN_GEOGRAPHICAL_DISTRICT, Community.COLUMN_ACCESSIBILITY, Community.COLUMN_CONNECTED_ECG, Community.COLUMN_DATE_OF_LICENSE, Community.COLUMN_DISTANCE_ECOM, Community.COLUMN_LATITUDE, Community.COLUMN_LONGITUDE, Community.COLUMN_COMMUNITY_IMAGE},
+                new String[]{Community.COLUMN_COMMUNITY_NAME,
+                        Community.COLUMN_COMMUNITY_ID,
+                        Community.COLUMN_GEOGRAPHICAL_DISTRICT,
+                        Community.COLUMN_ACCESSIBILITY,
+                        Community.COLUMN_CONNECTED_ECG,
+                        Community.COLUMN_DATE_OF_LICENSE,
+                        Community.COLUMN_DISTANCE_ECOM,
+                        Community.COLUMN_LATITUDE,
+                        Community.COLUMN_LONGITUDE,
+                        Community.COLUMN_COMMUNITY_IMAGE},
                 Community.COLUMN_COMMUNITY_ID + "=?",
-                new String[]{String.valueOf(localId)}, null, null, null, null);
+                new String[]{localId}, null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
@@ -143,7 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateNote(Community community) {
+    public int updateCommunity(Community community) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -154,10 +164,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(community.getLocalid())});
     }
 
-    public void deleteNote(Community community) {
+    public void deleteCommunity(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(Community.TABLE_NAME, Community.COLUMN_COMMUNITY_ID + " = ?",
-                new String[]{String.valueOf(community.getLocalid())});
+                new String[]{id});
         db.close();
     }
 
